@@ -70,3 +70,10 @@ function cellIsEmpty(cell) {
 		return false;
 	}
 }
+
+function swapTiles(selectedCell, destinationCell) {
+	selectedImage = selectedCell.firstChild;
+	destinationImage = destinationCell.firstChild;
+	selectedCell.appendChild(destinationImage);
+	destinationCell.appendChild(selectedImage);
+}
