@@ -76,4 +76,25 @@ function swapTiles(selectedCell, destinationCell) {
 	destinationImage = destinationCell.firstChild;
 	selectedCell.appendChild(destinationImage);
 	destinationCell.appendChild(selectedImage);
+
+	if (puzzleIsComplete()) {
+		document.getElementById("puzzleGrid").className = "win";
+	}
+}
+
+function puzzleIsComplete() {
+	var tiles = document.getElementById("puzzleGrid").getElementsByTagName("img");
+	var tileOrder = "";
+	for (var i = 0; i < tiles.length; i++) {
+		var num = tiles[i].src.substr(-6,2);
+		if (num != "ty") {
+			tileOrder += num;
+		}
+	}
+
+	if (tileOrder == "01020304050607080910111213141") {
+		return true;
+	} else {
+		return false;
+	}
 }
